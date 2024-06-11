@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
+import NotesContext from '../context/Notes/NotesContext';
 
 export default function About() {
-  const context = useContext("../context/Notes/NotesContext");
+  const context = useContext(NotesContext);
 
   return (
     <div className='container'>
