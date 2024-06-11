@@ -1,12 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import NotesContext from '../context/Notes/NotesContext';
 
 export default function About() {
   const context = useContext(NotesContext);
+  
+  useEffect(() => {
+    context.update();
+    context.changeName();
+  }, []);
 
   return (
     <div className='container'>
-      Name of the Prop : {context.name}
+      Name of the Prop : {context.state.name} and age is: {context.state.age}
     </div>
   )
 }
