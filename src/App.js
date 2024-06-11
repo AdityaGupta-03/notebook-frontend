@@ -3,12 +3,12 @@ import Navbar from './components/Navbar.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import notesState from './context/Notes/notesState.js';
+import NotesState from "./context/Notes/NotesState.js";
 
 function App() {
   return (
     <>
-      <notesState>
+      <NotesState>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -16,7 +16,7 @@ function App() {
             <Route path="/about" exact element={<About />} />
           </Routes>
         </BrowserRouter>
-      </notesState>
+      </NotesState>
     </>
 
   );
