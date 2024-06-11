@@ -3,10 +3,10 @@ import NotesContext from '../context/Notes/NotesContext';
 
 export default function About() {
   const context = useContext(NotesContext);
-  
+
   useEffect(() => {
-    context.update();
-    context.changeName();
+    context.updateAge();
+    context.updateName();
   }, []);
 
   return (

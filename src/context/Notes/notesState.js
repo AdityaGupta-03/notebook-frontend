@@ -13,7 +13,7 @@ const NotesState = (props) => {
             setState(prevState => ({...prevState, age: 25}))
         }, 1000);
     }
-    
+
     const changeName = ()=>{
         setTimeout(() => {
             setState(prevState => ({...prevState, name: "Addy"}))
@@ -21,7 +21,7 @@ const NotesState = (props) => {
         
     }
     return (
-        <NotesContext.Provider value={{state, update, changeName}}>
+        <NotesContext.Provider value={{state:state, updateAge:update, updateName:changeName}}>
             {props.children}
         </NotesContext.Provider>
     )
