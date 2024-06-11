@@ -10,8 +10,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/" exact element={<Home />} />
+          <Route path="/about" exact element={<About />} />
         </Routes>
       </BrowserRouter>
     </>
