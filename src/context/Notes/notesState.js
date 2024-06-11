@@ -1,6 +1,6 @@
 import notesContext from "./notesContext.js";
 
-const NotesState = (props) => {
+const notesState = (props) => {
     const state = {
         "name": "Aditya",
         "age": 20
@@ -13,4 +13,4 @@ const NotesState = (props) => {
     )
 }
 
-export default NotesState;
+export default notesState;
