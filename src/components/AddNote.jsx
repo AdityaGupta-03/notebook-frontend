@@ -31,7 +31,7 @@ const AddNote = () => {
                     <label htmlFor="desc" className="form-label">Description</label>
                     <textarea className="form-control" id="desc" rows="3" name='desc' onChange={onChange}></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={onSubmit}>Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={onSubmit}>Add Note</button>
             </form>
         </div>
     )
