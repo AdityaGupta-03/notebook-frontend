@@ -2,9 +2,9 @@ import React from 'react'
 
 function Alert(props) {
     return (
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div className="alert alert-success alert-dismissible fade show" role="alert">
             {props.msg}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     )
 }
