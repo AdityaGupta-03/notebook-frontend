@@ -74,7 +74,7 @@ const NotesState = (props) => {
         }
         setNotes([...notes, newNote]);
     }
-    
+
     // Delete a Note
     const deleteNote = async (id) => {
         setNotes(notes.filter(note => note._id!== id));
@@ -94,7 +94,7 @@ const NotesState = (props) => {
 
     return (
         // <NotesContext.Provider value={{state:state, updateAge:update, updateName:changeName}}>
-        <NotesContext.Provider value={{notes, setNotes}}>
+        <NotesContext.Provider value={{notes, addNote, deleteNote, editNote}}>
             {props.children}
         </NotesContext.Provider>
     )
