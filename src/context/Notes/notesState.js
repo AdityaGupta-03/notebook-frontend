@@ -62,12 +62,36 @@ const NotesState = (props) => {
     const [notes,setNotes] = useState(initialNotes);
 
     // Add a Note
-
+    const addNote = async (title, description, tag) => {
+        const newNote = {
+            "_id": "6669b0abc074a0fe305217a4",
+            "user": "666827070bb290a7ad4e7e64",
+            "title": title,
+            "description": description,
+            "tag": tag,
+            "date": "2024-06-12T14:28:59.572Z",
+            "__v": 0
+        }
+        setNotes([...notes, newNote]);
+    }
+    
     // Delete a Note
+    const deleteNote = async (id) => {
+        setNotes(notes.filter(note => note._id!== id));
+    }
 
     // Edit a Note
+    const editNote = async (id, title, description, tag) => {
+        setNotes(notes.map(note => {
+            if(note._id === id){
+                note.title = title;
+                note.description = description;
+                note.tag = tag;
+            }
+            return note;
+        }));
+    }
 
-    
     return (
         // <NotesContext.Provider value={{state:state, updateAge:update, updateName:changeName}}>
         <NotesContext.Provider value={{notes, setNotes}}>
