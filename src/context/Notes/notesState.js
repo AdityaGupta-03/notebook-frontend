@@ -54,6 +54,20 @@ const NotesState = (props) => {
     ];
     const [notes,setNotes] = useState(initialNotes);
 
+    const getNotes = async ()=>{
+        // API Call: To get all the notes
+        const url = `${host}/fetchNotes`;
+        const response = await fetch(url, {
+            method: "GET", 
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjYwMzgzNjk2YjAyYjc3ZTlmZDUxYSIsImlhdCI6MTcxNzk2MTY5MH0.C19Xe3YRfm44iJyN0qWglmg8doj9dREJWmauSGKoHSk"
+            },
+        });
+        const json = await response.json();
+        console.log(json);
+    }
+
     const addNote = async (title, description, tag) => {
         // API Call: To Add a note
         const url = `${host}/newNote`;
@@ -126,7 +140,7 @@ const NotesState = (props) => {
 
     return (
         // <NotesContext.Provider value={{state:state, updateAge:update, updateName:changeName}}>
-        <NotesContext.Provider value={{notes, addNote, deleteNote, editNote}}>
+        <NotesContext.Provider value={{notes, addNote, deleteNote, editNote, getNotes}}>
             {props.children}
         </NotesContext.Provider>
     )

@@ -1,10 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import notesContext from '../context/Notes/NotesContext'
 import NoteItem from './NoteItem';
 
 const Notes = () => {
     const context = useContext(notesContext);
 
+    useEffect(()=>{
+        context.getNotes();
+        // eslint-disable-next-line
+    },[]);
+    
     return (
         <div className="container my-3">
             <h2>Your Notes</h2>
