@@ -59,8 +59,15 @@ const NotesState = (props) => {
             "__v": 0
         }
     ];
-
     const [notes,setNotes] = useState(initialNotes);
+
+    // Add a Note
+
+    // Delete a Note
+
+    // Edit a Note
+
+    
     return (
         // <NotesContext.Provider value={{state:state, updateAge:update, updateName:changeName}}>
         <NotesContext.Provider value={{notes, setNotes}}>

@@ -4,6 +4,7 @@ import Home from './components/Home';
 import About from './components/About';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotesState from "./context/Notes/NotesState.js";
+import Alert from './components/Alert.jsx';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NotesState>
         <BrowserRouter>
           <Navbar />
+          <Alert msg={"This is Amazing course"}/>
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/about" exact element={<About />} />
