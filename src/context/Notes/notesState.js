@@ -21,7 +21,7 @@ const NotesState = (props) => {
 
     // }
 
-    const host = "localhost:5000/api/notes";
+    const host = "http://localhost:5000/api/notes";
 
     const initialNotes = [
         {
@@ -62,7 +62,7 @@ const NotesState = (props) => {
             headers: {
               "Content-Type": "application/json",
               "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjYwMzgzNjk2YjAyYjc3ZTlmZDUxYSIsImlhdCI6MTcxNzk2MTY5MH0.C19Xe3YRfm44iJyN0qWglmg8doj9dREJWmauSGKoHSk"
-            },
+            }
         });
         const json = await response.json();
         console.log(json);

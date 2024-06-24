@@ -5,11 +5,12 @@ import NoteItem from './NoteItem';
 const Notes = () => {
     const context = useContext(notesContext);
 
+    // Just like ComponentDidMount
     useEffect(()=>{
         context.getNotes();
         // eslint-disable-next-line
     },[]);
-    
+
     return (
         <div className="container my-3">
             <h2>Your Notes</h2>
