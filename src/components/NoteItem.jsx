@@ -19,7 +19,7 @@ const NoteItem = (props) => {
                     <h5 className="card-title">{props.note.title}</h5>
                     <h6 className="card-subtitle mb-2 text-body-secondary">{props.note.tag}</h6>
                     <p className="card-text">{props.note.description}</p>
-                    <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={onEdit} ><i className="fa-solid fa-pen-to-square"></i> Edit </button>
+                    <button type="button" className="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editModal" onClick={onEdit} ><i className="fa-solid fa-pen-to-square"></i> Edit </button>
                     <button type="button" className="btn btn-danger mx-3" onClick={onDelete}> <i className="fa-solid fa-trash"></i> Delete </button>
                 </div>
             </div>

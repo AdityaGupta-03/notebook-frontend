@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import notesContext from '../context/Notes/NotesContext';
 
 function Modal(props) {
@@ -11,15 +11,17 @@ function Modal(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         context.editNote(props.note.id, props.note.title, props.note.desc, props.note.tag);
+        // Optionally close the modal after submission
+        document.querySelector('[data-bs-dismiss="modal"]').click();
     }
 
     return (
         <>
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="editModal" tabIndex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">Edit Modal</h1>
+                            <h1 className="modal-title fs-5" id="editModalLabel">Edit Modal</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
