@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import notesContext from '../context/Notes/NotesContext'
 import NoteItem from './NoteItem';
 import Modal from './Modal';
 
 const Notes = () => {
     const context = useContext(notesContext);
+    const [selectedNote, setSelectedNote] = useState({ id: "", title: "", tag: "", desc: "" });
 
     // Just like ComponentDidMount
     useEffect(() => {
@@ -14,11 +15,11 @@ const Notes = () => {
 
     return (
         <div className="container my-3">
-            <Modal />
+            <Modal note={selectedNote} setNote={setSelectedNote} />
             <h2>Your Notes</h2>
             <div className="row">
                 {context.notes.map((note) => {
-                    return <NoteItem note={note} key={note._id} />
+                    return <NoteItem note={note} key={note._id} setSelectedNote={setSelectedNote} />
                 })}
             </div>
         </div>
