@@ -27,6 +27,7 @@ const NotesState = (props) => {
     const initialNotes = [];
     const [notes,setNotes] = useState(initialNotes);
 
+    // Fetch All Notes
     const getNotes = async ()=>{
         // API Call: To get all the notes
         const url = `${host}/fetchNotes`;
@@ -42,10 +43,10 @@ const NotesState = (props) => {
         setNotes(json);
     }
 
+    // Adding New Note
     const addNote = async (title, description, tag) => {
         // API Call: To Add a note
         const url = `${host}/newNote`;
-
         const response = await fetch(url, {
             method: "POST", 
             headers: {
@@ -70,24 +71,6 @@ const NotesState = (props) => {
         setNotes(notes.concat(newNote));
     }
 
-    const deleteNote = async (id) => {
-        // API Call: To Delete a Note
-        const noteID = "66660645fbfa5e1c79cd5358";
-        const url = `${host}/deleteNote/${noteID}`;
-
-        const response = await fetch(url, {
-            method: "DELETE", 
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": authToken
-            },
-            body: JSON.stringify(notes), 
-        });
-        const json = response.json();
-        console.log(json);
-        setNotes(notes.filter(note => note._id!== id));
-    }
-
     const editNote = async (id, title, description, tag) => {
         // API Call: To Edit a note
         const noteID = "66660645fbfa5e1c79cd5358";
@@ -103,7 +86,7 @@ const NotesState = (props) => {
         });
         const json = response.json();
         console.log(json);
-        
+
         setNotes(notes.map(note => {
             if(note._id === id){
                 note.title = title;
@@ -112,6 +95,21 @@ const NotesState = (props) => {
             }
             return note;
         }));
+    }
+
+    const deleteNote = async (id) => {
+        // API Call: To Delete a Note
+        const url = `${host}/deleteNote/${id}`;
+        const response = await fetch(url, {
+            method: "DELETE", 
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": authToken
+            }
+        });
+        const json = response.json();
+        console.log(json);
+        setNotes(notes.filter(note => note._id!== id));
     }
 
     return (
