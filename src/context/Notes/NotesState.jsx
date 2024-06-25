@@ -39,6 +39,7 @@ const NotesState = (props) => {
         });
         const json = await response.json();
         console.log(json);
+        setNotes(json);
     }
 
     const addNote = async (title, description, tag) => {
@@ -54,6 +55,7 @@ const NotesState = (props) => {
             body: JSON.stringify({title,description,tag}), 
         });
         const json = response.json();
+        console.log(json);
 
         const newNote = {
             "_id": "6669b0abc074a0fe305217a4",
@@ -82,7 +84,7 @@ const NotesState = (props) => {
             body: JSON.stringify(notes), 
         });
         const json = response.json();
-
+        console.log(json);
         setNotes(notes.filter(note => note._id!== id));
     }
 
@@ -100,7 +102,8 @@ const NotesState = (props) => {
             body: JSON.stringify(notes), 
         });
         const json = response.json();
-
+        console.log(json);
+        
         setNotes(notes.map(note => {
             if(note._id === id){
                 note.title = title;
