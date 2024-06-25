@@ -22,36 +22,9 @@ const NotesState = (props) => {
     // }
 
     const host = "http://localhost:5000/api/notes";
+    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2E5NTExN2IwM2QyZjY3MWVkZDE0NSIsImlhdCI6MTcxOTMwOTYyNn0.GL-TcT3cARXN7yDH3pATo9PCUBYNimTPvOAkEjbFZzc";
 
-    const initialNotes = [
-        {
-            "_id": "6669b0abc074a0fe305217a4",
-            "user": "666827070bb290a7ad4e7e64",
-            "title": "Shopping",
-            "description": "Buy Tomatoes, Dhaniya",
-            "tag": "General",
-            "date": "2024-06-12T14:28:59.572Z",
-            "__v": 0
-        },
-        {
-            "_id": "6669b0b9c074a0fe305217a6",
-            "user": "666827070bb290a7ad4e7e64",
-            "title": "Cutting",
-            "description": "Got to Hair Saloon",
-            "tag": "General",
-            "date": "2024-06-12T14:29:13.859Z",
-            "__v": 0
-        },
-        {
-            "_id": "6669b0cfc074a0fe305217a8",
-            "user": "666827070bb290a7ad4e7e64",
-            "title": "Market",
-            "description": "Buy Milk Bread",
-            "tag": "General",
-            "date": "2024-06-12T14:29:35.978Z",
-            "__v": 0
-        }
-    ];
+    const initialNotes = [];
     const [notes,setNotes] = useState(initialNotes);
 
     const getNotes = async ()=>{
@@ -61,7 +34,7 @@ const NotesState = (props) => {
             method: "GET", 
             headers: {
               "Content-Type": "application/json",
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjYwMzgzNjk2YjAyYjc3ZTlmZDUxYSIsImlhdCI6MTcxNzk2MTY5MH0.C19Xe3YRfm44iJyN0qWglmg8doj9dREJWmauSGKoHSk"
+              "auth-token": authToken
             }
         });
         const json = await response.json();
@@ -76,7 +49,7 @@ const NotesState = (props) => {
             method: "POST", 
             headers: {
               "Content-Type": "application/json",
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjYwMzgzNjk2YjAyYjc3ZTlmZDUxYSIsImlhdCI6MTcxNzk2MTY5MH0.C19Xe3YRfm44iJyN0qWglmg8doj9dREJWmauSGKoHSk"
+              "auth-token": authToken
             },
             body: JSON.stringify({title,description,tag}), 
         });
@@ -101,10 +74,10 @@ const NotesState = (props) => {
         const url = `${host}/deleteNote/${noteID}`;
 
         const response = await fetch(url, {
-            method: "DEL", 
+            method: "DELETE", 
             headers: {
               "Content-Type": "application/json",
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjYwMzgzNjk2YjAyYjc3ZTlmZDUxYSIsImlhdCI6MTcxNzk2MTY5MH0.C19Xe3YRfm44iJyN0qWglmg8doj9dREJWmauSGKoHSk"
+              "auth-token": authToken
             },
             body: JSON.stringify(notes), 
         });
@@ -122,7 +95,7 @@ const NotesState = (props) => {
             method: "PUT", 
             headers: {
               "Content-Type": "application/json",
-              "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjYwMzgzNjk2YjAyYjc3ZTlmZDUxYSIsImlhdCI6MTcxNzk2MTY5MH0.C19Xe3YRfm44iJyN0qWglmg8doj9dREJWmauSGKoHSk"
+              "auth-token": authToken
             },
             body: JSON.stringify(notes), 
         });
