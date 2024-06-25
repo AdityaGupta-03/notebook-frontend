@@ -53,7 +53,7 @@ const NotesState = (props) => {
             },
             body: JSON.stringify({title,description,tag})
         });
-        const json = response.json();
+        const json = await response.json();
 
         const newNote = {
             "_id": json._id,  // Use the ID from the response
