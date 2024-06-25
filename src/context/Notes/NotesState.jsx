@@ -24,12 +24,10 @@ const NotesState = (props) => {
     const host = "http://localhost:5000/api/notes";
     const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2E5NTExN2IwM2QyZjY3MWVkZDE0NSIsImlhdCI6MTcxOTMwOTYyNn0.GL-TcT3cARXN7yDH3pATo9PCUBYNimTPvOAkEjbFZzc";
 
-    const initialNotes = [];
-    const [notes,setNotes] = useState(initialNotes);
+    const [notes,setNotes] = useState([]);
 
-    // Fetch All Notes
     const getNotes = async ()=>{
-        // API Call: To get all the notes
+        // Backend API Call: to get all the notes from the Database
         const url = `${host}/fetchNotes`;
         const response = await fetch(url, {
             method: "GET", 
@@ -39,13 +37,13 @@ const NotesState = (props) => {
             }
         });
         const json = await response.json();
-        console.log(json);
+
+        // Displaying all the notes of the User
         setNotes(json);
     }
 
-    // Adding New Note
     const addNote = async (title, description, tag) => {
-        // API Call: To Add a note
+        // Backend API Call: to add note in the Database
         const url = `${host}/newNote`;
         const response = await fetch(url, {
             method: "POST", 
@@ -53,53 +51,28 @@ const NotesState = (props) => {
               "Content-Type": "application/json",
               "auth-token": authToken
             },
-            body: JSON.stringify({title,description,tag}), 
+            body: JSON.stringify({title,description,tag})
         });
         const json = response.json();
-        console.log(json);
 
         const newNote = {
-            "_id": "6669b0abc074a0fe305217a4",
-            "user": "666827070bb290a7ad4e7e64",
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": "2024-06-12T14:28:59.572Z",
-            "__v": 0
-        }
+            "_id": json._id,  // Use the ID from the response
+            "user": json.user, // Use the user from the response
+            "title": json.title,
+            "description": json.description,
+            "tag": json.tag,
+            "date": json.date, // Use the date from the response
+            "__v": json.__v    // Use the version from the response
+        };
+
+        // Showing the updated notes at the frontend
         // setNotes([...notes, newNote]);
         setNotes(notes.concat(newNote));
     }
 
-    const editNote = async (id, title, description, tag) => {
-        // API Call: To Edit a note
-        const noteID = "66660645fbfa5e1c79cd5358";
-        const url = `${host}/updateNote/${noteID}`;
-
-        const response = await fetch(url, {
-            method: "PUT", 
-            headers: {
-              "Content-Type": "application/json",
-              "auth-token": authToken
-            },
-            body: JSON.stringify(notes), 
-        });
-        const json = response.json();
-        console.log(json);
-
-        setNotes(notes.map(note => {
-            if(note._id === id){
-                note.title = title;
-                note.description = description;
-                note.tag = tag;
-            }
-            return note;
-        }));
-    }
-
-    const deleteNote = async (id) => {
-        // API Call: To Delete a Note
-        const url = `${host}/deleteNote/${id}`;
+    const deleteNote = async (noteID) => {
+        // Backend API Call: to delete the note from the Database
+        const url = `${host}/deleteNote/${noteID}`;
         const response = await fetch(url, {
             method: "DELETE", 
             headers: {
@@ -108,8 +81,35 @@ const NotesState = (props) => {
             }
         });
         const json = response.json();
+        console.log(json.success);
+
+        // Showing the updated notes at the frontend
+        setNotes(notes.filter(note => note._id!== noteID));
+    }
+
+    const editNote = async (noteID, title, description, tag) => {
+        // Backend API Call: To Edit a note;
+        const url = `${host}/updateNote/${noteID}`;
+        const response = await fetch(url, {
+            method: "PUT", 
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": authToken
+            },
+            body: JSON.stringify({title,description,tag})
+        });
+        const json = response.json();
         console.log(json);
-        setNotes(notes.filter(note => note._id!== id));
+
+        // Showing the updated notes at the frontend
+        setNotes(notes.map(note => {
+            if(note._id === noteID){
+                note.title = title;
+                note.description = description;
+                note.tag = tag;
+            }
+            return note;
+        }));
     }
 
     return (
