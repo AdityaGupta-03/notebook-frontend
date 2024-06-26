@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useHistory} from 'react'
 
 export default function Login() {
+    let history = useHistory();
     const [cred, setCred] = React.useState({
         email:'',
         password:''
@@ -22,7 +23,7 @@ export default function Login() {
             console.log(data);
             setCred({ email: '', password: ''});
             if(data.token){
-                window.location.href = "/";
+                history.push("/");
             }
         } catch (error) {
             console.log(error);
