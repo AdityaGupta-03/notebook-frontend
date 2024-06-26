@@ -21,7 +21,7 @@ export default function Login() {
             const data = await res.json();
             console.log(data);
             setCred({ email: '', password: ''});
-            if(data.token && localStorage.getItem("token") === data.token ){
+            if(data.token){
                 window.location.href = "/";
             }
         } catch (error) {
