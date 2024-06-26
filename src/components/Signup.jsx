@@ -66,8 +66,8 @@ export default function Signup() {
                     <input type="password" className="form-control" id="password" name='password' value={cred.password} onChange={handleChange} required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="c_password" className="form-label"> Confirm Password</label>
-                    <input type="password" className="form-control" id="c_password" name='c_password' value={cred.cpassword} onChange={handleChange} required/>
+                    <label htmlFor="cpassword" className="form-label"> Confirm Password</label>
+                    <input type="password" className="form-control" id="cpassword" name='cpassword' value={cred.cpassword} onChange={handleChange} required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
