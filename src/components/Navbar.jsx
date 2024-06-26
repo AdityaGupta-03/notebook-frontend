@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useLocation} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
     let location = useLocation()
@@ -20,10 +20,8 @@ export default function Navbar() {
                             <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
                         </li>
                     </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    <Link type="button" class="btn btn-outline-warning" to={"/signup"}>Signup</Link>
+                    <Link type="button" class="btn btn-outline-danger mx-2" to={"/login"}>Login</Link>
                 </div>
             </div>
         </nav>
