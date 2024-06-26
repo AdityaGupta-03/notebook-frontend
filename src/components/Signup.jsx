@@ -39,7 +39,10 @@ export default function Signup() {
             const authtoken = response.json();
             setName({ fname: '', lname: '' });
             setCred({ email: '', password: '', cpassword: '' });
-            console.log(authtoken);
+            if(authtoken.token){
+                localStorage.setItem('token', authtoken.token);
+                window.location.href = "/";
+            }
         }
         else{
             console.log("Password mismatch");
