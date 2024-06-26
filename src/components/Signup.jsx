@@ -30,11 +30,11 @@ export default function Signup() {
         if(cred.password === cred.cpassword){
             const url = `${host}/createUser`;
             const response = await fetch(url, {
-                method: "PUT",
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ name, email: cred.email, password: cred.password })
+                body: JSON.stringify({ name: `${name.fname} ${name.lname}` , email: cred.email, password: cred.password })
             });
             const authtoken = response.json();
             console.log(authtoken);
@@ -44,7 +44,7 @@ export default function Signup() {
         }
     }
     return (
-        <div className='container my-5'>
+        <div className='container my-3'>
             <h1>Signup:</h1>
             <form onSubmit={handleSubmit}>
                 <div className="row my-3">
