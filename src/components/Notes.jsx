@@ -17,6 +17,7 @@ const Notes = () => {
         <div className="container my-3">
             <Modal note={selectedNote} setNote={setSelectedNote} />
             <h2>Your Notes</h2>
+            {context.notes.length === 0 && "No notes to display"}
             <div className="row">
                 {context.notes.map((note) => {
                     return <NoteItem note={note} key={note._id} setSelectedNote={setSelectedNote} />
