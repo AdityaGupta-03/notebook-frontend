@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import notesContext from '../context/Notes/NotesContext';
 
+// props.note : selectednote
+// props.setNote : setselectedNote
 function Modal(props) {
     const context = useContext(notesContext);
 
