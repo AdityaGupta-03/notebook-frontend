@@ -22,7 +22,7 @@ export default function Signup() {
             setCred({...cred, cpassword: value});
         }
     }
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const host = "http://localhost:5000/api/auth";
@@ -36,8 +36,8 @@ export default function Signup() {
                 },
                 body: JSON.stringify({ name, email: cred.email, password: cred.password })
             });
-            const json = response.json();
-            console.log(json);
+            const authtoken = response.json();
+            console.log(authtoken);
         }
         else{
             console.log("Password mismatch");
@@ -50,7 +50,7 @@ export default function Signup() {
                 <div className="row my-3">
                     <div className="col">
                         <label htmlFor="fname">First Name: </label>
-                        <input type="text" className="form-control" placeholder="First name" aria-label="First name" id='fname' value={name.fname} onChange={handleChange}/>
+                        <input type="text" className="form-control" placeholder="First name" aria-label="First name" id='fname' value={name.fname} onChange={handleChange} required/>
                     </div>
                     <div className="col">
                         <label htmlFor="lname"> Last Name: </label>
@@ -59,15 +59,15 @@ export default function Signup() {
                 </div>
                 <div className="my-3">
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' value={cred.email} onChange={handleChange}/>
+                    <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' value={cred.email} onChange={handleChange} required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" name='password' value={cred.password} onChange={handleChange}/>
+                    <input type="password" className="form-control" id="password" name='password' value={cred.password} onChange={handleChange} required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="c_password" className="form-label"> Confirm Password</label>
-                    <input type="password" className="form-control" id="c_password" name='c_password' value={cred.cpassword} onChange={handleChange}/>
+                    <input type="password" className="form-control" id="c_password" name='c_password' value={cred.cpassword} onChange={handleChange} required/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
