@@ -37,6 +37,8 @@ export default function Signup() {
                 body: JSON.stringify({ name: `${name.fname} ${name.lname}` , email: cred.email, password: cred.password })
             });
             const authtoken = response.json();
+            setName({ fname: '', lname: '' });
+            setCred({ email: '', password: '', cpassword: '' });
             console.log(authtoken);
         }
         else{
