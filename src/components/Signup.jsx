@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Signup() {
+export default function Signup(props) {
     const [name, setName] = React.useState({ fname: '', lname: '' });
     const [cred, setCred] = React.useState({ email: '', password: '', cpassword: '' })
 
@@ -45,7 +45,7 @@ export default function Signup() {
             }
         }
         else{
-            console.log("Password mismatch");
+            props.showAlert("Password didn't match","danger");
         }
     }
     return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useHistory} from 'react-router-dom'
 
-export default function Login() {
+export default function Login(props) {
     let history = useHistory();
     const [cred, setCred] = React.useState({
         email:'',
@@ -27,7 +27,7 @@ export default function Login() {
                 history.push("/");
             }
         } catch (error) {
-            console.log(error);
+            props.showAlert("Invalid Credentials","danger");
         }
     }
   return (

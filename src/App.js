@@ -19,7 +19,7 @@ function App() {
       <NotesState>
         <BrowserRouter>
           <Navbar />
-          <Alert showAlert={showAlert}/>
+          <Alert alert={alert}/>
           <Routes>
             <Route path="/" exact element={<Home showAlert={showAlert}/>} />
             <Route path="/about" exact element={<About showAlert={showAlert}/>} />
