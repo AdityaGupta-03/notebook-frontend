@@ -1,8 +1,8 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
-    let history = useHistory();
+    const navigate = useNavigate();
     const [cred, setCred] = React.useState({
         email:'',
         password:''
@@ -24,7 +24,7 @@ export default function Login(props) {
             console.log(data);
             setCred({ email: '', password: ''});
             if(data.token){
-                history.push("/");
+                navigate("/");
                 props.showAlert("Successfully logged In","success");
             }
         } catch (error) {

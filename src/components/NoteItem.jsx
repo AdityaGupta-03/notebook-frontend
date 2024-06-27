@@ -5,6 +5,7 @@ const NoteItem = (props) => {
     const context = useContext(notesContext)
     const onDelete = () => {
         context.deleteNote(props.note._id);
+        props.showAlert("Deleted Successfully", "success");
     }
 
     // Function to handle edit button click

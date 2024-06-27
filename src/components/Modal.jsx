@@ -13,6 +13,7 @@ function Modal(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         context.editNote(props.note.id, props.note.title, props.note.desc, props.note.tag);
+        props.showAlert("Your note has been Updated Successfully","success")
         // Optionally close the modal after submission
         document.querySelector('[data-bs-dismiss="modal"]').click();
     }

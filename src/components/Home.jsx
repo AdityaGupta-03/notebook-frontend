@@ -6,7 +6,7 @@ export default function Home(props) {
   return (
     <>
       <AddNote showAlert={props.showAlert}/>
-      <Notes />
+      <Notes showAlert={props.showAlert}/>
     </>
   )
 }
