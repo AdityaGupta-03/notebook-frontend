@@ -42,6 +42,7 @@ export default function Signup(props) {
             if(authtoken.token){
                 localStorage.setItem('token', authtoken.token);
                 window.location.href = "/";
+                props.showAlert("Successfully created your account","success");
             }
         }
         else{

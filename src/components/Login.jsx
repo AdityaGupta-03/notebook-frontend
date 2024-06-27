@@ -25,6 +25,7 @@ export default function Login(props) {
             setCred({ email: '', password: ''});
             if(data.token){
                 history.push("/");
+                props.showAlert("Successfully logged In","success");
             }
         } catch (error) {
             props.showAlert("Invalid Credentials","danger");
