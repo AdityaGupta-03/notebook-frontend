@@ -45,7 +45,7 @@ export default function Signup(props) {
 
                 // Delay redirect to allow the alert to be shown
                 setTimeout(() => {
-                    window.location.href = "/login";
+                    window.location.href = "/";
                 }, 2000);  // Adjust the delay time as needed
             }
         }

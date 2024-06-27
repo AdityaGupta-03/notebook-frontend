@@ -22,7 +22,7 @@ const NotesState = (props) => {
     // }
 
     const host = "http://localhost:5000/api/notes";
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2N2E5NTExN2IwM2QyZjY3MWVkZDE0NSIsImlhdCI6MTcxOTMwOTYyNn0.GL-TcT3cARXN7yDH3pATo9PCUBYNimTPvOAkEjbFZzc";
+    const authToken = localStorage.getItem("token");
 
     const [notes,setNotes] = useState([]);
 

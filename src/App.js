@@ -7,6 +7,7 @@ import NotesState from "./context/Notes/NotesState";
 import Alert from './components/Alert.jsx';
 import Signup from './components/Signup.jsx';
 import Login from './components/Login.jsx';
+import Logout from './components/Logout.jsx';
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -25,6 +26,7 @@ function App() {
             <Route path="/about" exact element={<About showAlert={showAlert}/>} />
             <Route path="/signup" exact element={<Signup showAlert={showAlert}/>} />
             <Route path="/login" exact element={<Login showAlert={showAlert}/>} />
+            <Route path="/logout" exact element={<Logout showAlert={showAlert}/>} />
           </Routes>
         </BrowserRouter>
       </NotesState>
